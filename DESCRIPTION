@@ -26,8 +26,5 @@ Imports:
     utils,
     tools
 Suggests:
-    testthat (>= 3.0.0),
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
+    testthat (>= 3.0.0)
 

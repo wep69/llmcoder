@@ -48,11 +48,23 @@ save_custom_models <- function(custom_models) {
 
 #' Add Custom Model
 #'
+#' Add a custom LLM model to a specified provider. The custom model will be
+#' saved to the user's custom models configuration file.
+#'
 #' @param provider Provider name (openai, gemini, qwen, openrouter)
 #' @param model_id Model identifier
 #' @param display_name Optional display name for the model
 #' @param description Optional description
+#' @return Invisible TRUE on success
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Add a custom OpenAI model
+#'   add_custom_model("openai", "gpt-4-custom", "GPT-4 Custom", "Custom GPT-4 model")
+#'   
+#'   # Add a custom model with minimal information
+#'   add_custom_model("openai", "my-model")
+#' }
 add_custom_model <- function(provider, model_id, display_name = NULL, description = NULL) {
   # Validate provider
   config <- load_config()
@@ -99,9 +111,17 @@ add_custom_model <- function(provider, model_id, display_name = NULL, descriptio
 
 #' Remove Custom Model
 #'
+#' Remove a custom LLM model from a specified provider's configuration.
+#'
 #' @param provider Provider name
 #' @param model_id Model identifier to remove
+#' @return Invisible TRUE on success
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Remove a custom model
+#'   remove_custom_model("openai", "my-custom-model")
+#' }
 remove_custom_model <- function(provider, model_id) {
   custom_models <- load_custom_models()
 
@@ -130,9 +150,21 @@ remove_custom_model <- function(provider, model_id) {
 
 #' List Custom Models
 #'
+#' Display a list of all configured custom models, optionally filtered by provider.
+#' Returns a data frame with model information including provider, model ID, 
+#' display name, and description.
+#'
 #' @param provider Optional provider name to filter results
 #' @return Data frame with custom models information
 #' @export
+#' @examples
+#' \dontrun{
+#'   # List all custom models
+#'   list_custom_models()
+#'   
+#'   # List custom models for a specific provider
+#'   list_custom_models("openai")
+#' }
 list_custom_models <- function(provider = NULL) {
   custom_models <- load_custom_models()
 
@@ -210,9 +242,21 @@ get_all_models <- function(provider) {
 
 #' Import Models from OpenRouter
 #'
-#' Downloads and adds popular models from OpenRouter
+#' Import popular LLM models from OpenRouter's catalog as custom models.
+#' This function adds a curated list of frequently used models to the 
+#' OpenRouter provider configuration.
+#'
 #' @param limit Maximum number of models to import (default: 20)
+#' @return Invisible number of models imported
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Import the default set of popular models
+#'   import_openrouter_models()
+#'   
+#'   # Import only the top 10 most popular models
+#'   import_openrouter_models(limit = 10)
+#' }
 import_openrouter_models <- function(limit = 20) {
   cat("Importing popular OpenRouter models...\n")
 
@@ -263,8 +307,17 @@ import_openrouter_models <- function(limit = 20) {
 
 #' Create Custom Models Template File
 #'
-#' Creates an example custom models YAML file
+#' Create an example YAML configuration file for custom models with 
+#' sample model definitions. This helps users get started with adding 
+#' their own custom LLM models.
+#'
+#' @return Invisible path to the created template file
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Create the custom models template file
+#'   create_custom_models_template()
+#' }
 create_custom_models_template <- function() {
   config <- load_config()
   template_file <- path.expand(config$custom_models$file_path)
