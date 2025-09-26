@@ -4,7 +4,16 @@
 
 #' Generate Code with LLM
 #'
+#' Opens an interactive dialog to generate R code using various LLM providers.
+#' The generated code can be inserted directly into the active RStudio document.
+#'
+#' @return No return value, called for side effects (opens interactive UI)
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Open the code generation interface
+#'   llm_generate_code()
+#' }
 llm_generate_code <- function() {
   # Create the UI
   ui <- miniUI::miniPage(
@@ -146,7 +155,17 @@ llm_generate_code <- function() {
 
 #' Fix Code with LLM
 #'
+#' Opens an interactive dialog to fix and improve selected R code using various LLM providers.
+#' If no code is selected, opens with an empty text area for manual input.
+#' The improved code can be inserted back into the active RStudio document.
+#'
+#' @return No return value, called for side effects (opens interactive UI)
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Select some R code in RStudio, then run:
+#'   llm_fix_code()
+#' }
 llm_fix_code <- function() {
   # Get selected text from RStudio
   selected_text <- ""
@@ -292,7 +311,17 @@ llm_fix_code <- function() {
 
 #' Explain Code with LLM
 #'
+#' Opens an interactive dialog to get explanations of selected R code using various LLM providers.
+#' If no code is selected, opens with an empty text area for manual input.
+#' The explanation is displayed in a formatted output area.
+#'
+#' @return No return value, called for side effects (opens interactive UI)
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Select some R code in RStudio, then run:
+#'   llm_explain_code()
+#' }
 llm_explain_code <- function() {
   # Get selected text from RStudio
   selected_text <- ""

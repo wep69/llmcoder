@@ -4,7 +4,16 @@
 
 #' LLM Settings Addin
 #'
+#' Opens an interactive configuration interface to manage API keys and preferences
+#' for various LLM providers including OpenAI, Gemini, Qwen, and OpenRouter.
+#'
+#' @return No return value, called for side effects (opens settings UI)
 #' @export
+#' @examples
+#' \dontrun{
+#'   # Open the settings interface
+#'   llm_settings()
+#' }
 llm_settings <- function() {
   config <- load_config()
   prefs <- get_user_prefs()
