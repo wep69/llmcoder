@@ -1,0 +1,25 @@
+# R files
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Claude specific
+.claude/
+
+# Build files
+*.tar.gz
+*.zip
+
+# User configuration files (contains API keys)
+.llmcoder_config.rds
+.llmcoder_custom_models.yml

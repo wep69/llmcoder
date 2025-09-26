@@ -1,0 +1,19 @@
+Name: Generate Code with LLM
+Description: Generate R code using various LLM providers
+Binding: llm_generate_code
+Interactive: true
+
+Name: Fix Code with LLM
+Description: Fix and improve selected R code using LLM
+Binding: llm_fix_code
+Interactive: true
+
+Name: Explain Code
+Description: Get explanation of selected R code from LLM
+Binding: llm_explain_code
+Interactive: true
+
+Name: LLM Settings
+Description: Configure LLM providers and API keys
+Binding: llm_settings
+Interactive: true

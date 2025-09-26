@@ -1,0 +1,33 @@
+Package: llmcoder
+Type: Package
+Title: LLM Code Assistant for RStudio
+Version: 0.1.0
+Author: Walter
+Maintainer: Walter <walter@email.com>
+Description: RStudio addin for generating and correcting R code using various LLM providers including OpenAI, Gemini, Qwen, and OpenRouter.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.0
+Depends: R (>= 4.0.0)
+Imports:
+    shiny (>= 1.7.0),
+    miniUI (>= 0.1.1),
+    rstudioapi (>= 0.13),
+    httr2 (>= 1.0.0),
+    jsonlite (>= 1.8.0),
+    DT (>= 0.24),
+    shinydashboard (>= 0.7.2),
+    shinyWidgets (>= 0.7.0),
+    config (>= 0.3.1),
+    glue (>= 1.6.0),
+    yaml (>= 2.3.0),
+    stats,
+    utils,
+    tools
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+

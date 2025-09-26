@@ -1,0 +1,105 @@
+default:
+  providers:
+    openai:
+      name: "OpenAI"
+      base_url: "https://api.openai.com/v1"
+      models:
+        - "gpt-4o"
+        - "gpt-4o-mini"
+        - "gpt-4-turbo"
+        - "gpt-4"
+        - "gpt-3.5-turbo"
+        - "o1-preview"
+        - "o1-mini"
+      default_model: "gpt-4o"
+      allow_custom_models: true
+
+    gemini:
+      name: "Google Gemini"
+      base_url: "https://generativelanguage.googleapis.com/v1beta"
+      models:
+        - "gemini-1.5-pro"
+        - "gemini-1.5-flash"
+        - "gemini-1.5-flash-8b"
+        - "gemini-2.0-flash-exp"
+        - "gemini-exp-1206"
+        - "gemini-1.0-pro"
+      default_model: "gemini-1.5-pro"
+      allow_custom_models: true
+
+    qwen:
+      name: "Alibaba Qwen"
+      base_url: "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
+      models:
+        - "qwen-max"
+        - "qwen-plus"
+        - "qwen-turbo"
+        - "qwen2.5-72b-instruct"
+        - "qwen2.5-32b-instruct"
+        - "qwen2.5-14b-instruct"
+        - "qwen2.5-7b-instruct"
+        - "qwen2.5-3b-instruct"
+        - "qwen2.5-1.5b-instruct"
+        - "qwen2.5-0.5b-instruct"
+        - "qwq-32b-preview"
+      default_model: "qwen-max"
+      allow_custom_models: true
+
+    openrouter:
+      name: "OpenRouter"
+      base_url: "https://openrouter.ai/api/v1"
+      models:
+        - "openai/gpt-4o"
+        - "openai/gpt-4o-mini"
+        - "openai/gpt-4-turbo"
+        - "openai/o1-preview"
+        - "openai/o1-mini"
+        - "anthropic/claude-3.5-sonnet"
+        - "anthropic/claude-3.5-haiku"
+        - "anthropic/claude-3-opus"
+        - "google/gemini-pro-1.5"
+        - "google/gemini-flash-1.5"
+        - "meta-llama/llama-3.1-405b-instruct"
+        - "meta-llama/llama-3.1-70b-instruct"
+        - "meta-llama/llama-3.1-8b-instruct"
+        - "mistralai/mistral-large"
+        - "mistralai/mistral-small"
+        - "mistralai/codestral"
+        - "deepseek/deepseek-chat"
+        - "qwen/qwen-2.5-72b-instruct"
+        - "cohere/command-r-plus"
+        - "x-ai/grok-beta"
+      default_model: "openai/gpt-4o"
+      allow_custom_models: true
+
+  # Configuração para modelos personalizados
+  custom_models:
+    enabled: true
+    file_path: "~/.llmcoder_custom_models.yml"
+
+  prompts:
+    generate_code: |
+      You are an expert R programmer. Generate clean, efficient, and well-documented R code based on the following request:
+
+      Request: {prompt}
+
+      Please provide only the R code with appropriate comments. Make sure the code follows R best practices and includes necessary library imports.
+
+    fix_code: |
+      You are an expert R programmer. The following R code has issues or could be improved. Please fix any errors and optimize the code:
+
+      Original code:
+      ```r
+      {code}
+      ```
+
+      Please provide the corrected and improved R code with explanations of what was fixed.
+
+    explain_code: |
+      You are an expert R programmer. Please explain the following R code in detail, including what each part does and any R-specific concepts used:
+
+      ```r
+      {code}
+      ```
+
+      Provide a clear, educational explanation suitable for someone learning R.
